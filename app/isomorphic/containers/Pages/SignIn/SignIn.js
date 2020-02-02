@@ -5,49 +5,49 @@ import Input from '@iso/components/uielements/input';
 import Checkbox from '@iso/components/uielements/checkbox';
 import Button from '@iso/components/uielements/button';
 import IntlMessages from '@iso/components/utility/intlMessages';
-import FirebaseLoginForm from '../../FirebaseForm/FirebaseForm';
+// import FirebaseLoginForm from '../../FirebaseForm/FirebaseForm';
 import authAction from '@iso/redux/auth/actions';
 import appAction from '@iso/redux/app/actions';
 import Auth0 from '../../Authentication/Auth0/Auth0';
-import {
-  signInWithGoogle,
-  signInWithFacebook,
-  signInWithGithub,
-  signInWithTwitter,
-} from '@iso/lib/firebase/firebase.authentication.util';
+// import {
+//   signInWithGoogle,
+//   signInWithFacebook,
+//   signInWithGithub,
+//   signInWithTwitter,
+// } from '@iso/lib/firebase/firebase.authentication.util';
 import SignInStyleWrapper from './SignIn.styles';
 
 const { login } = authAction;
 const { clearMenu } = appAction;
 
 export default function SignIn() {
-  let history = useHistory();
-  let location = useLocation();
-  const dispatch = useDispatch();
-  const isLoggedIn = useSelector(state => state.Auth.idToken);
+  // let history = useHistory();
+  // let location = useLocation();
+  // // const dispatch = useDispatch();
+  // const isLoggedIn = false
 
-  const [redirectToReferrer, setRedirectToReferrer] = React.useState(false);
-  React.useEffect(() => {
-    if (isLoggedIn) {
-      setRedirectToReferrer(true);
-    }
-  }, [isLoggedIn]);
+  // const [redirectToReferrer, setRedirectToReferrer] = React.useState(false);
+  // React.useEffect(() => {
+  //   if (isLoggedIn) {
+  //     setRedirectToReferrer(true);
+  //   }
+  // }, [isLoggedIn]);
 
   function handleLogin(e, token = false) {
     e.preventDefault();
-    if (token) {
-      dispatch(login(token));
-    } else {
-      dispatch(login());
-    }
-    dispatch(clearMenu());
-    history.push('/dashboard');
+    // if (token) {
+    //   dispatch(login(token));
+    // } else {
+    //   dispatch(login());
+    // }
+    // dispatch(clearMenu());
+    // history.push('/dashboard');
   }
-  let { from } = location.state || { from: { pathname: '/dashboard' } };
+  // let { from } = location.state || { from: { pathname: '/dashboard' } };
 
-  if (redirectToReferrer) {
-    return <Redirect to={from} />;
-  }
+  // if (redirectToReferrer) {
+  //   return <Redirect to={from} />;
+  // }
   return (
     <SignInStyleWrapper className="isoSignInPage">
       <div className="isoLoginContentWrapper">
@@ -91,14 +91,14 @@ export default function SignIn() {
             </form>
             <div className="isoInputWrapper isoOtherLogin">
               <Button
-                onClick={signInWithFacebook}
+                // onClick={signInWithFacebook}
                 type="primary"
                 className="btnFacebook"
               >
                 <IntlMessages id="page.signInFacebook" />
               </Button>
               <Button
-                onClick={signInWithGoogle}
+                // onClick={signInWithGoogle}
                 type="primary"
                 className="btnGooglePlus"
               >
@@ -115,10 +115,10 @@ export default function SignIn() {
                 <IntlMessages id="page.signInAuth0" />
               </Button>
 
-              <FirebaseLoginForm
+              {/* <FirebaseLoginForm
                 history={history}
                 login={token => dispatch(login(token))}
-              />
+              /> */}
             </div>
             <div className="isoCenterComponent isoHelperWrapper">
               <Link to="/forgotpassword" className="isoForgotPass">

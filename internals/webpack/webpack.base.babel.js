@@ -120,8 +120,10 @@ module.exports = options => ({
     extensions: ['.js', '.jsx', '.react.js'],
     mainFields: ['browser', 'jsnext:main', 'main'],
     alias: {
+      '@iso/lib': path.resolve(process.cwd(), 'app/shared/common/library/'),
       '@iso': path.resolve(process.cwd(), 'app/isomorphic/'),
     },
+
   },
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window
